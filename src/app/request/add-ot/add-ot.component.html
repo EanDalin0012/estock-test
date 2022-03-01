@@ -1,0 +1,108 @@
+<!-- Page Content -->
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+      <div class="row align-items-center">
+          <div class="col">
+              <h3 class="page-title">OT</h3>
+              <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/request/ot" >OT</a></li>
+                  <li class="breadcrumb-item active">Add New OT</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card leave-box">
+          <div  class="card-body">
+            <div class="row clearfix">
+
+              <form #formUser="ngForm">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label >OT Date <span class="text-danger">*</span></label>
+                      <input type="date" id="oTDate" name="oTDate" #oTDate="ngModel" [(ngModel)]="oTData.date" placeholder="Enter your first name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="oTDate.invalid && (oTDate.dirty || oTDate.touched)">
+
+                      <div *ngIf="oTDate.invalid && (oTDate.dirty || oTDate.touched)" class="invalid-feedback">
+                        <div *ngIf="oTDate.errors?.['required']">
+                          This first name is required.
+                        </div>
+                        <div *ngIf="oTDate.errors?.['minlength']">
+                          This first name must have at least 1 character.
+                        </div>
+                        <div *ngIf="oTDate.errors?.['maxlength']">
+                          This first name must have at most 250 characters.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label >Start Time <span class="text-danger">*</span></label>
+                      <input type="time" id="startTime" name="startTime" #startTime="ngModel" [(ngModel)]="oTData.startTime" placeholder="Enter your first name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="startTime.invalid && (oTDate.dirty || startTime.touched)">
+
+                      <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="invalid-feedback">
+                        <div *ngIf="startTime.errors?.['required']">
+                          This field is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label >End Time <span class="text-danger">*</span></label>
+                      <input type="time" id="endTime" name="endTime" #endTime="ngModel" [(ngModel)]="oTData.endTime" placeholder="Enter your last name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="endTime.invalid && (endTime.dirty || endTime.touched)">
+                      <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="invalid-feedback">
+                        <div *ngIf="endTime.errors?.['required']">
+                          This field is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col mb-2 d-grid">
+                    <button type="button" class="btn btn-sm btn-primary" (click)="btnSave(formUser)">Save</button>
+                  </div>
+                </div>
+              </form>
+
+
+              <div class="row col-md-12" style="height: 500px;">
+                <ag-grid-angular #app
+                style="width: 100%; height: 100%;"
+                class="ag-theme-alpine"
+                [columnDefs]="columnDefs"
+                [autoGroupColumnDef]="autoGroupColumnDef"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="rowSelection"
+                [rowGroupPanelShow]="rowGroupPanelShow"
+                [pivotPanelShow]="pivotPanelShow"
+                [enableRangeSelection]="true"
+                [tooltipShowDelay]="tooltipShowDelay"
+                [pagination]="true"
+                [rowData]="rowData"
+                (gridReady)="onGridReady($event)"
+                (selectionChanged)="onSelectionChanged($event)"
+              ></ag-grid-angular>
+              </div>
+
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

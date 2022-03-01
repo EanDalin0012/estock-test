@@ -1,0 +1,23 @@
+.disabled:hover {
+  background-color: #35ba67;
+  border-color: #2fa65c;
+  color: gray !important;
+}
+
+.disabled svg {
+  color: gray !important;
+}
+
+.disabled-delete {
+  background-color: rgb(231, 76, 60);
+  color: gray !important;
+  cursor: not-allowed;
+  text-decoration: underline;
+  border-color:  rgb(231, 76, 60);
+}
+
+
+.disabled-delete-remove {
+  background-color: rgb(231, 76, 60);
+  border-color:  rgb(231, 76, 60);
+}

@@ -1,0 +1,213 @@
+{
+  "common": {
+    "label": {
+      "sort": "តម្រៀប",
+      "all": "ទាំងអស់",
+      "no": "ទេ",
+      "items": "{{value}} ធាតុ",
+      "add_New": "បន្ថែម​ថ្មី",
+      "register": "ចុះឈ្មោះ",
+      "remark":"សម្គាល់",
+      "status":"ស្ថានភាព",
+      "fileName":"ឈ្មោះ​ឯកសារ {{value}}",
+      "fileSize":"ទំហំ​ឯកសារ {{value}}",
+      "updatePassword":"ធ្វើឱ្យទាន់សម័យពាក្យសម្ងាត់",
+      "searchBy":"ស្វែងរកតាមពាក្យគន្លឹះ",
+      "setting":"ការកំណត់",
+      "success":"ជោគជ័យ",
+      "error":"កំហុស",
+      "name":"ឈ្មោះ",
+      "searchNameThere":"ស្វែងរកឈ្មោះនៅទីនោះ",
+      "search":"ស្វែងរក",
+      "settingClientVideoMenu":"ការកំណត់ម៉ឺនុយវីដេអូអតិថិជន",
+      "loading":"កំពុងផ្ទុក",
+      "pleaseWait":"សូមរង់ចាំ",
+      "id":"លេខសម្គាល់",
+      "uploadImage":"បង្ហោះរូបភាព",
+      "uploadVedio":"បង្ហោះវីដេអូ"
+    },
+    "button": {
+      "back": "ត្រឡប់មកវិញ",
+      "close": "បិទ",
+      "register": "ចុះឈ្មោះ",
+      "save": "រក្សាទុក",
+      "edit": "កែសម្រួល",
+      "update": "បច្ចុប្បន្នភាព",
+      "confirme": "បញ្ជាក់",
+      "yes": "បាទ",
+      "no": "ទេ",
+      "delete": "លុប",
+      "add_New": "បន្ថែម​ថ្មី",
+      "export_PDF": "នាំចេញទៅជា PDF",
+      "export_Excel": "នាំចេញទៅជា Excel",
+      "add_Img": "បន្ថែម img",
+      "upload":"ផ្ទុកឡើង",
+      "remove":"យកចេញ",
+      "logout":"ចេញ",
+      "profile":"ប្រវត្តិរូប",
+      "login":"ចូល",
+      "next":"បន្ទាប់",
+      "previous":"ទំព័រ​មុន",
+      "action":"សកម្មភាព"
+    },
+    "holder": {
+      "enterRemark": "បញ្ចូលការកត់សម្គាល់"
+    },
+    "message": {
+      "unSelectRow":"សូមដាក់ជួរនៅលើ grid.",
+      "noAccess": "អ្នកមិនមានសិទ្ធិម៉ឺនុយទេ។",
+      "notLogin": "ការតភ្ជាប់ត្រូវបានបាត់បង់សូមចូលម្តងទៀត",
+      "reqFail": "សំណើរបស់អ្នកបានបរាជ័យ សូម​ព្យាយាម​ម្តង​ទៀត​នៅ​ពេល​ក្រោយ។"
+    }
+  },
+  "role":{
+    "label": {
+      "role":"តួនាទី"
+    }
+  },
+
+
+
+  "login":{
+    "label": {
+      "userName":"ឈ្មោះ​អ្នកប្រើប្រាស់",
+      "password":"ពាក្យសម្ងាត់",
+      "login":"ចូល",
+      "accessToOurSystem":"ចូលប្រើប្រព័ន្ធរបស់យើង។"
+    },
+    "holder": {
+      "enterUserName":"បញ្ចូលឈ្មោះអ្នកប្រើ",
+      "enterPassword":"បញ្ចូលពាក្យសម្ងាត់"
+    },
+    "message": {
+      "userNameRequired":"*ឈ្មោះអ្នកប្រើត្រូវតែមាន។",
+      "passwordRequired":"*ឈ្មោះពាក្យសម្ងាត់ត្រូវតែមាន។"
+    }
+  },
+  "movie": {
+    "label": {
+      "movieType":"ប្រភេទភាពយន្ត",
+      "addNewMovieType":"បន្ថែមប្រភេទភាពយន្តថ្មី",
+      "addMovieType":"បន្ថែមប្រភេទភាពយន្ត",
+      "movie":"ភាពយន្ត",
+      "lstMovieType":"បញ្ជីប្រភេទភាពយន្ត",
+      "updateMovieType":"ធ្វើបច្ចុប្បន្នភាពប្រភេទភាពយន្ត",
+      "deleteMovieType":"លុបប្រភេទភាពយន្ត"
+    },
+    "holder": {
+      "enterMovieType":"បញ្ចូលប្រភេទភាពយន្ត"
+    },
+    "message": {
+      "movieTypeRequired":"*ប្រភេទភាពយន្តត្រូវតែមាន។",
+      "deleted":"បានលុបប្រភេទភាពយន្ត។",
+      "added":"ប្រភេទភាពយន្តត្រូវបានបន្ថែម។",
+      "udpated":"ប្រភេទភាពយន្តត្រូវបានធ្វើបច្ចុប្បន្នភាព។",
+      "qDelete":"តើអ្នកចង់លុបឈ្មោះធាតុ {{name}} ?"
+    }
+  },
+  "movieType": {
+    "label": {
+      "lstSubMovieType":"បញ្ជីប្រភេទភាពយន្តរង។",
+      "addNewSubMovieType":"បន្ថែមប្រភេទភាពយន្តរងថ្មី។",
+      "addSubMovieType":"បន្ថែមប្រភេទភាពយន្តរងថ្មី។",
+      "subMovieType":"បន្ថែមប្រភេទភាពយន្តរង",
+      "updateSubMovieType":"ធ្វើបច្ចុប្បន្នភាពប្រភេទភាពយន្តរង។",
+      "deleteSunMovieType":"លុបប្រភេទភាពយន្តរង។"
+    },
+    "holder": {
+      "enterSubMovieType":"បញ្ចូលប្រភេទភាពយន្តរង។"
+    },
+    "message": {
+      "subMovieTypeRequired":"*តម្រូវឱ្យមានប្រភេទភាពយន្តរង។",
+      "deleted":"បានលុបប្រភេទភាពយន្តរង។",
+      "added":"ប្រភេទភាពយន្តរងត្រូវបានបន្ថែម។",
+      "udpated":"ប្រភេទភាពយន្តត្រូវបានធ្វើបច្ចុប្បន្នភាព។",
+      "qDelete":"តើអ្នកចង់លុបឈ្មោះធាតុ {{name}} ?"
+    }
+  },
+  "clientVdSetting": {
+    "label": {},
+    "message": {
+      "settingClientVideoMenuUpdate":"ធ្វើបច្ចុប្បន្នភាពម៉ឺនុយវីដេអូអតិថិជន {{value}}"
+    }
+  },
+  "video": {
+    "label": {
+      "title":"ចំណងជើង",
+      "movie":"ភាពយន្ត",
+      "image":"រូបភាព",
+      "type":"ប្រភេទ",
+      "addNewMovie":"បន្ថែមភាពយន្តថ្មី",
+      "addMovie":"បន្ថែមភាពយន្ត",
+      "movieType":"ប្រភេទភាពយន្ត",
+      "subMovieType":"ប្រភេទភាពយន្តរង",
+      "runSchedule":"បង្ហាញវីដេអូដល់អតិថិជនតាមកាលបរិច្ឆេទ",
+      "deleteMovie":"លុបភាពយន្ត",
+      "editMovie":"កែសម្រួលភាពយន្ត",
+      "lstMovie":"បញ្ជីភាពយន្ត",
+      "movies":"ភាពយន្ត",
+      "part":"ភាគ"
+    },
+    "message": {
+      "titleRequired":"*ចំណងជើងត្រូវមាន។",
+      "movieRequired":"*តម្រូវឱ្យមានប្រភេទភាពយន្ត។",
+      "typeRequired":"*តម្រូវឱ្យមានប្រភេទភាពយន្តរង។",
+      "imageRequired":"*រូបភាពត្រូវបានទាមទារ។",
+      "added":"ខ្សែភាពយន្តថ្មីត្រូវបានបន្ថែម។",
+      "udpated":"ភាពយន្តថ្មីត្រូវបានធ្វើបច្ចុប្បន្នភាព។",
+      "qDelete":"តើអ្នកចង់លុបឈ្មោះធាតុ {{name}} ?",
+      "deleted":"ភាពយន្តត្រូវបានលុបចោល។"
+    },
+    "holder": {
+      "enterSubMovieType":"បញ្ចូលប្រភេទភាពយន្តរង",
+      "enterTitle":"បញ្ចូលចំណងជើង"
+    }
+  },
+  "videoSource": {
+    "label": {
+      "addNewMovieSource":"បន្ថែមប្រភពភាពយន្តថ្មី",
+      "movieSource":"ប្រភពភាពយន្ត",
+      "addMovieSource":"បន្ថែមប្រភពភាពយន្ត",
+      "part":"ភាគ",
+      "videoIsEnd":"វីដេអូចប់",
+      "videoEnableOn":"បើកដំណើរការវីដេអូតាមកាលបរិច្ឆេទ",
+      "lstMovieSource":"បញ្ជីរាយប្រភពភាពយន្ត",
+      "video":"វីដេអូ",
+      "searchPart":"ស្វែងរកតាមភាគ"
+    },
+    "message": {
+      "partRequired":"*ផ្នែកត្រូវតែមាន",
+      "videoSourceRequired":"*ត្រូវការប្រភពវីដេអូ",
+      "qDelete":"តើអ្នកចង់លុបភាគ {{part}} ?",
+      "uploadVideoSuccess":"បង្ហោះវីដេអូជោគជ័យ។",
+      "videoSourceNameReadyHave":"ឈ្មោះវីដេអូមានរួចរាល់ក្នុងម៉ាស៊ីនមេ។"
+    },
+    "holder": {
+      "enterPart":"បញ្ចូលភាគ",
+      "selectDate":"ជ្រើសរើសកាលបរិច្ឆេទ"
+    }
+  },
+  "videoPreView": {
+    "label": {
+      "preViewVideo":"មើលវីដេអូជាមុន",
+      "moviesSource":"ប្រភពភាពយន្ត"
+    }
+  },
+  "serverResponseCode":{
+    "label": {
+      "unknown":"កំហុសមិនស្គាល់",
+      "serverError":"កំហុសម៉ាស៊ីនមេ",
+      "apiNotFound":"រកមិនឃើញAPI",
+      "sessionExpired":"សម័យកាល​បាន​ផុតកំណត់។",
+      "inValidMovieTypeIdWithValue":"លេខសម្គាល់ប្រភេទភាពយន្តមិនត្រឹមត្រូវ : {{value}}.",
+      "inValidMovieTypeId":"លេខសម្គាល់ប្រភេទភាពយន្តមិនត្រឹមត្រូវ",
+      "userNotFound":"រកមិនឃើញឈ្មោះអ្នកប្រើ។",
+      "accountLocked":"អ្នកប្រើប្រាស់ត្រូវបានចាក់សោ។",
+      "userDisabled":"អ្នកប្រើត្រូវបានបិទ។",
+      "userExpired":"អ្នកប្រើផុតកំណត់ចូល។",
+      "invalidPassword":"បញ្ចូលពាក្យសម្ងាត់ខុស",
+      "inValidVdId":"លេខសម្គាល់ប្រភេទភាពយន្តមិនត្រឹមត្រូវ",
+      "errorConectionRefused":"បានបដិសេធការតភ្ជាប់កំហុស។"
+    }
+  }
+}
