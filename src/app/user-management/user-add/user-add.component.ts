@@ -26,6 +26,8 @@ interface IUser {
 })
 export class UserAddComponent implements OnInit {
 
+  checkConfirmPassword = true;
+
   user!: IUser;
   userInfo!: UserInfo;
   submitted = false;
@@ -72,7 +74,7 @@ export class UserAddComponent implements OnInit {
 
   public validateForm(form: NgForm): void {
     console.log(form.form.value, form.invalid);
-
+    this.checkConfirmPassword = true;
     if (form.invalid) {
       for (const control of Object.keys(form.controls)) {
         form.controls[control].markAsTouched();

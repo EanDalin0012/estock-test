@@ -42,26 +42,26 @@ export class HTTPService {
         $('div.loading').removeClass('none');
         $('body').removeClass('loaded');
 
-        // const authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
-        // const access_token = authorization.access_token;
-        // if (!access_token) {
-        //   // this.modalService.alert(
-        //   //    '',
-        //   //   {
-        //   //   modalClass: 'open-alert',
-        //   //   btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
-        //   //   callback: (res:any) => {
-        //   //     Utils.removeSecureStorage(localStorage.Authorization);
-        //   //     Utils.removeSecureStorage(localStorage.USER_INFO);
-        //   //     this.router.navigate(['/login']);
-        //   //   }
-        //   // });
-        //   // return;
-        // }
+        const authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
+        const access_token = authorization.access_token;
+        if (!access_token) {
+          // this.modalService.alert(
+          //    '',
+          //   {
+          //   modalClass: 'open-alert',
+          //   btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+          //   callback: (res:any) => {
+          //     Utils.removeSecureStorage(localStorage.Authorization);
+          //     Utils.removeSecureStorage(localStorage.USER_INFO);
+          //     this.router.navigate(['/login']);
+          //   }
+          // });
+          // return;
+        }
 
         const httpOptionsObj = {
           'Content-Type': 'application/json',
-          // Authorization: 'Bearer ' + access_token
+          Authorization: 'Bearer ' + access_token
         };
 
         const userInfo = Utils.getSecureStorage(LOCAL_STORAGE.USER_INFO);
@@ -138,8 +138,8 @@ export class HTTPService {
       // const date = moment().format('dddd, MMMM D, YYYY hh:mm:ss');
       // const uri = this.baseUrl + api + '?userId=' + userInfo.id + '&lang=' + lang + '&date='+date;
       const uri = this.baseUrl + api;
-      // const authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
-      // const access_token = authorization.access_token;
+      const authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
+      const access_token = authorization.access_token;
 
       // if (!access_token) {
       //   this.modalService.alert({
@@ -151,11 +151,11 @@ export class HTTPService {
       //   });
       //   return;
       // }
-      // const headers = {
-      //   Authorization: 'Bearer ' + access_token
-      // };
+      const headers = {
+        Authorization: 'Bearer ' + access_token
+      };
 // {headers}
-      this.httpClient.get(uri).subscribe( (rest:any) => {
+      this.httpClient.get(uri, {headers}).subscribe( (rest:any) => {
         $('body').addClass('loaded');
         $('div.loading').addClass('none');
         const result = rest as any;
@@ -176,7 +176,7 @@ export class HTTPService {
 
       }, error => {
         console.log('oops', error);
-        alert();
+        alert(error.error + '['+error.error.error_description+']');
       });
     });
   }

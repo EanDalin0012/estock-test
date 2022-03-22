@@ -126,6 +126,68 @@
 
                 </div>
 
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label >User Name <span class="text-danger">*</span></label>
+                      <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="userInfo.firstName" placeholder="Enter your first name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="firstName.invalid && (firstName.dirty || firstName.touched)">
+
+                      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-feedback">
+                        <div *ngIf="firstName.errors?.['required']">
+                          This field is required.
+                        </div>
+                        <!-- <span>{{firstName.value}}, {{firstName.invalid}}</span> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label >Password <span class="text-danger">*</span></label>
+                      <input type="text" id="password" name="password" #password="ngModel" [(ngModel)]="userInfo.password" placeholder="Enter your first name" required minlength="5" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+
+                      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                        <div *ngIf="password.errors?.['required']">
+                          This feild is required.
+                        </div>
+                        <div *ngIf="password.errors?.['minlength']">
+                          This first name must have at least 5 character.
+                        </div>
+
+                        <!-- <div *ngIf="firstName.errors?.['maxlength']">
+                          This first name must have at most 250 characters.
+                        </div> -->
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label >Re Password<span class="text-danger">*</span></label>
+                      <input type="text" id="rePassword" name="rePassword" #rePassword="ngModel" [(ngModel)]="userInfo.rePassword" placeholder="Enter your last name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="rePassword.invalid && (rePassword.dirty || rePassword.touched)">
+                      <div *ngIf="rePassword.invalid && (rePassword.dirty || rePassword.touched)" class="invalid-feedback">
+                        <div *ngIf="rePassword.errors?.['required']">
+                          This feidl is required.
+                        </div>
+                        <div *ngIf="rePassword.errors?.['minlength']">
+                          This last name must have at least 1 character.
+                        </div>
+                      </div>
+
+                      <div *ngIf="checkConfirmPassword === true">
+                        Password not macth.
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">

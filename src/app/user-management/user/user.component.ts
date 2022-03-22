@@ -121,12 +121,12 @@ export class UserComponent implements OnInit {
   }
 
   btnNew() {
-    this.router.navigate(['/user-management/user-add']);
+    this.router.navigate(['/user-management/user/add']);
   }
 
   btnEdit() {
     Utils.setSecureStorage('edit-user', this.itemSelectedGride);
-    this.router.navigate(['/user-management/user-edit']);
+    this.router.navigate(['/user-management/user/edit']);
   }
   btnDelete() {
     if(this.disabled === false) {

@@ -28,7 +28,7 @@ export enum AESINFO {
 }
 
 export enum HTTPResponseCode {
-  Success = "200",
+  Success = "SUCCESS",
   NotFound = "404",
   Found = "302",
   Forbidden = "403"

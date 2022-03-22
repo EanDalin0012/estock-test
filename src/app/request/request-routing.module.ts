@@ -1,3 +1,4 @@
+import { AuthGuard } from './../share/service/auth.guard';
 import { AddOTComponent } from './add-ot/add-ot.component';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
 import { OTComponent } from './ot/ot.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '', component: RequestComponent,
+    path: '',canActivateChild: [ AuthGuard ], component: RequestComponent,
     children: [
       {
         path: 'ot',

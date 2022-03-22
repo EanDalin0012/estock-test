@@ -1,3 +1,6 @@
+import { AuthGuard } from './../share/service/auth.guard';
+import { RoleEditComponent } from './role-edit/role-edit.component';
+import { RoleAddComponent } from './role-add/role-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserComponent } from './user/user.component';
@@ -15,13 +18,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '', component: UserManagementComponent,
+    path: '', canActivateChild: [ AuthGuard ], component: UserManagementComponent,
     children: [
-      {path: 'role', component: RoleComponent},
-      {path: 'authority', component: AuthorityComponent},
-      {path: 'user', component: UserComponent},
-      {path: 'user-add', component: UserAddComponent},
-      {path: 'user-edit', component: UserEditComponent}
+      {
+        path: 'user',
+        children: [
+          {path: '', component: UserComponent},
+          {path: 'add', component: UserAddComponent},
+          {path: 'edit', component: UserEditComponent}
+        ]
+      },
+      {
+        path: 'role',
+        children: [
+          {path: '', component: RoleComponent},
+          {path: 'add', component: RoleAddComponent},
+          {path: 'edit', component: RoleEditComponent}
+        ]
+      },
+      {path: 'authority', component: AuthorityComponent}
     ]
   }
 ];

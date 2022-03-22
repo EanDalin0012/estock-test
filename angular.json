@@ -48,7 +48,9 @@
               "src/assets/js/jquery.dataTables.min.js",
               "src/assets/js/dataTables.bootstrap4.min.js",
               "src/assets/js/select2.min.js",
-              "src/assets/fontawesome-free/js/all.min.js"
+              "src/assets/fontawesome-free/js/all.min.js",
+              "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"
             ]
           },
           "configurations": {

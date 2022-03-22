@@ -32,6 +32,10 @@ export const CONSTANT_AUTHORITY = [
     CODE: 'ADD_USER'
   },
   {
+    URL: '/user-management/user/edit',
+    CODE: 'ADD_USER'
+  },
+  {
     URL: '/request/leav/edit',
     CODE: 'EDIT_USER'
   },

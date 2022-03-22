@@ -64,7 +64,7 @@ export class AuthorityComponent implements OnInit {
     resizable: true,
     filter: true,
     flex: 1,
-    minWidth: 100,
+    minWidth: 150,
   };
   public rowSelection = 'single';
   public rowGroupPanelShow = 'always';

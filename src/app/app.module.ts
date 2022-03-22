@@ -1,3 +1,5 @@
+import { WebSocketService } from './share/service/web-socket.service';
+import { AuthGuard } from './share/service/auth.guard';
 import { ShareModule } from './share/share.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
@@ -48,7 +50,9 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

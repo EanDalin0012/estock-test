@@ -2,15 +2,19 @@ import { CONSTANT_AUTHORITY } from './../constant/constant-authorities';
 import { LOCAL_STORAGE } from './../constant/constant';
 import { Utils } from 'src/app/share/util/utils.static';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
+
   data: any[] =[];
   dataAuthorites: any[] = [];
+  constructor() {
+    this.data = Utils.getSecureStorage(LOCAL_STORAGE.CONSTANT_AUTHORITY);
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -18,7 +22,10 @@ export class AuthGuard implements CanActivate {
       console.log('route', route);
       console.log('state', state);
       console.log('state url', state.url);
-      this.data = Utils.getSecureStorage(LOCAL_STORAGE.CONSTANT_AUTHORITY);
+
+      if(this.data.length <= 0 ) {
+        this.data = Utils.getSecureStorage(LOCAL_STORAGE.CONSTANT_AUTHORITY);
+      }
       if('/home/dashboard' === state.url) {
         checkReturn  = true;
       }
@@ -43,6 +50,12 @@ export class AuthGuard implements CanActivate {
         alert("Your user don't have permission access this function. pls check with user administrator");
       }
       return checkReturn;
+  }
+
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+     console.log('childRoute', childRoute);
+     console.log('state', state);
+     return true;
   }
 
 

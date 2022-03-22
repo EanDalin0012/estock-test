@@ -1,9 +1,16 @@
+import { WebSocketService } from './../share/service/web-socket.service';
+import { LoadUserRequest } from './../share/data/request/load.user.request';
+import { environment } from './../../environments/environment';
+import { HTTPService } from './../share/service/http.service';
+import { Auth } from './../share/data/auth';
+import { AuthentcatiionService } from './../share/service/authentcatiion.service';
 import { LOCAL_STORAGE } from './../share/constant/constant';
 import { Utils } from 'src/app/share/util/utils.static';
-
-import { Component, ElementRef, OnInit, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: 'app-login',
@@ -11,125 +18,69 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private baseUrl: string = '';
+  auth!: Auth;
+  loadUserRequest!: LoadUserRequest;
 
-  submitted = false;
-  @ViewChild("userName") inputUserName: any;
-  @ViewChild("password") inputPassword: any;
-  isFirstLogin = false;
+  url = 'http://localhost:8080/websocket'
+  client: any;
+  greeting: string = '';
 
-  public formLogin: any;
-  isValidLoading = false;
   constructor(
     // private dataService: DataService,
-    // private authentcatiionService: AuthentcatiionService,
+    private authentcatiionService: AuthentcatiionService,
     private router: Router,
     private formBuilder: FormBuilder,
     private zone: NgZone,
+    private hTTPService: HTTPService,
+    private webSocketService: WebSocketService
     ) {
-      this.formLogin as FormGroup;
-      this.inputUserName as ElementRef;
-      this.inputPassword as ElementRef;
-
-      this.formLogin = this.formBuilder.group({
-        userName: ['', Validators.required],
-        password: ['', Validators.required]
-      });
+      this.loadUserRequest = {} as LoadUserRequest;
+      this.auth = {} as Auth;
+      this.baseUrl = environment.bizServer.server;
     }
 
   ngOnInit(): void {
-    this.formLogin.patchValue({
-      userName: 'admin@gmail.com',
-      password: 'admin123'
-    });
+    this.auth.userName = 'admin@gmail.com';
+    this.auth.password = 'admin1234';
+    console.log(this.auth);
+    // this.webSocketService.connect();
+
   }
 
   routors() {
     this.router.navigate(['/acc']);
   }
 
-  isEmpty(value: string) {
-    switch (value) {
-      case 'u':
-        this.formLogin.patchValue({
-          userName: '',
-        });
-        break;
-      case 'p':
-        this.formLogin.patchValue({
-          password: '',
-        });
-        break;
-    }
-  }
-
-  onLogin() {
-    this.submitted = true;
-    // if(this.f.userName.errors) {
-    //   this.inputUserName.nativeElement.focus();
-    // } else if (this.f.password.errors) {
-    //   this.inputPassword.nativeElement.focus();
-    // } else {
-    //   this.isValidLoading = true;
-    //   const formData = this.formLogin.getRawValue();
-    //   const logInfo = {
-    //     user_name: formData.userName,
-    //     password: formData.password
-    //   };
-    //   this.authentcatiionService.login(logInfo).then((resp: any) => {
-    //     if(resp) {
-    //       if(resp.result === false) {
-    //         this.isValidLoading = false;
-    //       } else {
-    //         this.isFirstLogin = resp.isFirstLogin;
-    //         if(this.isFirstLogin == true) {
-    //           this.zone.run(() =>  this.router.navigate(['/home'], { replaceUrl: true }));
-    //         } else {
-    //           this.zone.run(() =>  this.router.navigate(['/home'], { replaceUrl: true }));
-    //         }
-    //       }
-
-    //     }
-    //   }).catch((err: any) => {
-    //       console.log(err);
-    //   });
-    // }
-    // }
-    const Data = [
-      {
-        id: 1,
-        name: 'READ_OT'
-      },
-      {
-        id: 2,
-        name: 'ADD_OT'
-      },
-      {
-        id: 4,
-        name: 'EDIT_OT'
-      },
-      {
-        id: 5,
-        name: 'READ_LEAVE'
-      },
-      {
-        id: 6,
-        name: 'READ_USER'
-      },
-      {
-        id: 7,
-        name: 'ADD_USER'
-      },
-      {
-        id: 8,
-        name: 'EDIT_USER'
+  onLogin(form: NgForm) {
+    console.log(form.form.value, form.invalid);
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
       }
-    ];
-    Utils.setSecureStorage(LOCAL_STORAGE.CONSTANT_AUTHORITY, Data);
-    this.zone.run(() =>  this.router.navigate(['/home'], { replaceUrl: true }));
-  }
+      return;
+    } else {
+      this.authentcatiionService.login(this.auth).then((resp: any) => {
+        console.log('authentcatiionService', resp);
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.formLogin.controls;
+        if(resp && resp.access_token) {
+          const lang = Utils.getSecureStorage(LOCAL_STORAGE.I18N);
+
+          const uri = '/api/user-info/load-user';
+          this.loadUserRequest.userName = this.auth.userName;
+          this.hTTPService.Post(uri, this.loadUserRequest).then(resposne =>{
+            console.log('loadUserRequest', resposne);
+            Utils.setSecureStorage(LOCAL_STORAGE.USER_INFO, resposne);
+            Utils.setSecureStorage(LOCAL_STORAGE.CONSTANT_AUTHORITY, resposne.authorities);
+            // this.connection();
+            this.zone.run(() =>  this.router.navigate(['/home'], { replaceUrl: true }));
+          });
+        }
+
+      }).catch((err: any) => {
+          console.log(err);
+      });
+    }
   }
 
   changePassword(item: any) {
@@ -141,6 +92,27 @@ export class LoginComponent implements OnInit {
 
     //   }
     // });
+  }
+
+  connection(){
+    const tokenValue = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
+    console.log(tokenValue);
+    const header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+tokenValue.access_token
+    };
+    console.log('header', header);
+
+    let socket = new SockJS('http://localhost:8080/api/websocket', header)
+    let stompClient = Stomp.over(socket)
+    stompClient.connect(header, frame => {
+      console.log('frame', frame);
+
+      // stompClient.subscribe('/user/api/v1/socket/send/greetings', data => {
+      //   console.log('data', data);
+      // })
+    })
+
   }
 
 }

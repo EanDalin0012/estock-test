@@ -21,15 +21,16 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'home',  canActivate: [ AuthGuard ], component: LayoutComponent,
+    path: 'home', component: LayoutComponent,
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'user-management', canActivate: [ AuthGuard ],component: LayoutComponent,
+    path: 'user-management',component: LayoutComponent,
     loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule)
   },
   {
-    path: 'request', canActivate: [ AuthGuard ],component: LayoutComponent,
+    // canActivate: [ AuthGuard ]
+    path: 'request ',component: LayoutComponent,
     loadChildren: () => import('./request/request.module').then(m => m.RequestModule)
   },
    // { path: 'announce/4error', component: Error4Component }, ETypeModule

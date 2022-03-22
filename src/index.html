@@ -545,6 +545,7 @@ $('#loader-wrapper').delay(500).fadeOut('slow');
 });
 
   </script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
 </head>
 <body class="loaded" style="width: 100%;">
   <div class="main-wrapper">
@@ -586,6 +587,10 @@ $('#loader-wrapper').delay(500).fadeOut('slow');
 
   <script src="./assets/js/select2.min.js"></script>
 
-
+  <script>
+    if (global === undefined) {
+        var global = window;
+      }
+    </script>
 </body>
 </html>

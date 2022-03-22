@@ -8,5 +8,8 @@ export interface UserInfo {
   email:string;
   roleId: number;
   departmentId: number;
+  userName: string;
+  password: string;
+  rePassword: string;
   remark: string;
 }
